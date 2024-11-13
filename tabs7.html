@@ -20,7 +20,7 @@
             text-align: center;
             margin-top: 20px;
             font-size: 2em;
-            color: #0066cc; /* Blue color for the headline */
+            color: #0066cc;
             text-transform: capitalize;
             letter-spacing: 1px;
             animation: fadeIn 2s ease-in-out;
@@ -36,6 +36,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .tab button {
@@ -43,21 +44,27 @@
             border: none;
             outline: none;
             cursor: pointer;
-            padding: 14px 16px;
+            padding: 16px 24px;
             transition: 0.3s;
             font-size: 17px;
-            /* width: 30%; */
+            width: 25%;
             text-transform: capitalize;
             letter-spacing: 1px;
+            min-width: 120px;
+            margin: 5px;
+            color: #333;
+            text-align: center;
         }
 
         .tab button:hover {
             background-color: #ddd;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .tab button.active {
             background-color: #ccc;
             font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         /* Tab Content Styles */
@@ -76,6 +83,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
+            animation: fadeInUp 1s ease-in-out;
         }
 
         .grid-item {
@@ -122,21 +130,91 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
+        /* For Desktop & Large Screens */
+        @media (min-width: 1200px) {
             .tab button {
-                width: 50%;
+                width: 25%;
+                font-size: 18px;
+            }
+
+            h2 {
+                font-size: 2.5em;
+            }
+        }
+
+        /* For Laptop */
+        @media (max-width: 1366px) {
+            .tab button {
+                width: 25%;
+                font-size: 16px;
+            }
+
+            h2 {
+                font-size: 2.2em;
+            }
+        }
+
+        /* For Tablet Landscape */
+        @media (max-width: 1200px) {
+            .tab button {
+                width: 30%;
+                font-size: 15px;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+        }
+
+        /* For Tablet Portrait */
+        @media (max-width: 1024px) {
+            .tab button {
+                width: 45%;
                 font-size: 14px;
+            }
+
+            h2 {
+                font-size: 1.8em;
             }
 
             .grid-container {
                 grid-template-columns: 1fr;
             }
+        }
+
+        /* For Mobile Landscape */
+        @media (max-width: 880px) {
+            .tab button {
+                width: 50%;
+                font-size: 14px;
+            }
 
             h2 {
-                font-size: 1.5em;
+                font-size: 1.6em;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
             }
         }
 
+        /* For Mobile Portrait */
+        @media (max-width: 767px) {
+            .tab button {
+                width: 100%;
+                font-size: 12px;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* For Small Mobile Devices */
         @media (max-width: 480px) {
             .tab button {
                 width: 100%;
@@ -147,18 +225,6 @@
                 font-size: 1.2em;
             }
         }
-
-        /* For larger screens like desktop and widescreen */
-        @media (min-width: 1200px) {
-            .tab button {
-                width: 20%;
-                font-size: 18px;
-            }
-
-            h2 {
-                font-size: 2.5em;
-            }
-        }
     </style>
 </head>
 <body>
@@ -166,7 +232,7 @@
 <h2>Interactive Direct Mail Samples</h2>
 
 <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'Sample1')">Scracth Off Mailers</button>
+    <button class="tablinks" onclick="openCity(event, 'Sample1')">Scratch Off Mailers</button>
     <button class="tablinks" onclick="openCity(event, 'Sample2')">3D PopUp Elements</button>
     <button class="tablinks" onclick="openCity(event, 'Sample3')">Slide Out & Pull Away Displays</button>
     <button class="tablinks" onclick="openCity(event, 'Sample4')">Interactive & Multi Layered Pieces</button>
@@ -254,20 +320,22 @@ function openCity(evt, cityName) {
 
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";  // Hide all tab content
+        tabcontent[i].style.display = "none";
     }
 
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");  // Remove active class from all buttons
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
 
-    document.getElementById(cityName).style.display = "block";  // Show the selected tab content
-    evt.currentTarget.className += " active";  // Add 'active' class to the clicked button
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
 }
 
-// Trigger click on the first tab by default
-document.querySelector('.tablinks').click();
+// Automatically open the first tab when the page loads
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector(".tablinks").click();
+});
 </script>
 
 </body>

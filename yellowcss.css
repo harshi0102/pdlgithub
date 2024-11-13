@@ -1,0 +1,81 @@
+/* Heading */
+.elementor-widget-heading h2{
+	color:#ffffff !important;
+}
+
+/* Span Tag */
+.resource-text h2 span{
+	color:#556bfa;
+	font-size:36px;
+	letter-spacing:-0.2px;
+	text-transform:capitalize;
+}
+
+/* Paragraph */
+.resource-library .resource-text p{
+	font-weight:400;
+	margin-top:35px;
+	font-family:'Manrope', sans-serif;
+}
+
+/* Link */
+.book-boxes .book-box a{
+	text-align:center;
+	font-family:'Manrope', sans-serif;
+}
+
+/* Paragraph */
+.book-boxes .book-box p{
+	font-family:'Manrope', sans-serif;
+	line-height:1.5em;
+	font-size:18px;
+}
+
+/* Tab */
+.hentry .elementor .tab{
+	
+}
+
+/* 640px and smaller screen sizes */
+@media (max-width:640px){
+
+	/* Heading */
+	.resource-library .resource-text h2{
+		text-align:center;
+		font-size:31px !important;
+		line-height:1.3em;
+	}
+	
+	/* Paragraph */
+	.resource-library .resource-text p{
+		text-align:center;
+	}
+	
+	/* Span Tag */
+	.resource-text h2 span{
+		letter-spacing:0.6px;
+		font-size:35px;
+	}
+	
+}
+
+/* 411px and smaller screen sizes */
+@media (max-width:411px){
+
+	/* Tab */
+	.hentry .elementor .tab{
+		display:inline;
+		transform:translatex(0px) translatey(0px);
+	}
+	
+}
+
+/* 349px and smaller screen sizes */
+@media (max-width:349px){
+
+	/* Tab */
+	.hentry .elementor .tab{
+		display:inline;
+	}
+	
+}

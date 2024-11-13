@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabbed Layout with Two Boxes in Each Tab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Manrope', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2em;
+            color: #0066cc;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Tab Container Styles */
+        .tabs-wrapper {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            font-family: 'Manrope';
+        }
+
+        .tab-link {
+            background-color: inherit;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 8px 12px;
+            transition: 0.3s;
+            font-size: 16px;
+            width: 48%;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            min-width: 120px;
+            margin: 3px;
+            color: white;
+            font-family: 'Manrope';
+            text-align: center;
+            flex: 1;
+        }
+
+        .tab-link:hover {
+            background-color: white;
+            box-shadow: none;
+            color: black;
+        }
+
+        .tab-link.active {
+            background-color: rgb(70, 70, 70);
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        /* Tab Content Styles */
+        .tab-panel {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .grid-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /*max-width:none;*/
+           width: 100%;
+    min-width: 500px;
+    height:auto;
+    max-width: none;
+           
+        }
+
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            color: black;
+            text-decoration: underline !important;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family:'Manrope';
+            transition: background-color 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color:none;
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tab Styling */
+        .scratch-tab, .slide-out {
+            color: white;
+            font-weight: bold;
+            text-transform: capitalize;
+            font-family: 'Manrope';
+            padding: 12px 15px;
+            border-radius: 5px;
+            margin: 3px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            width: 48%;
+            flex: 1;
+        }
+
+        .scratch-tab {
+            background-color: #0079c2;
+        }
+
+        .slide-out {
+            background-color: #0079c2;
+        }
+
+        .scratch-tab:hover, .slide-out:hover {
+            background-color: rgb(70, 70, 70);
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Active State */
+        .slide-out.active, .scratch-tab.active {
+            background-color: rgb(70, 70, 70);
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+ #Box1 .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    height: auto;
+
+#Box1 .grid-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    min-width: 500px;
+    height: 350px; 
+}
+
+#Box1 .grid-item video {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+
+     
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1366px) {
+            .scratch-tab, .slide-out {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .scratch-tab, .slide-out {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .scratch-tab, .slide-out {
+                width: 48%;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 880px) {
+            .scratch-tab, .slide-out {
+                width: 100%;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .scratch-tab, .slide-out {
+                width: 100%;
+                font-size: 12px;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+
+        /* Extra small mobile screens */
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 1.5em;
+            }
+            .grid-item {
+                padding: 15px;
+                font-size: 14px;
+            }
+            .download-btn {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+
+            /* Mobile-specific adjustments for .scratch-tab and .slide-out */
+            .scratch-tab, .slide-out {
+                width: 100%;
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+        }
+
+        /* Landscape Mode */
+        @media (orientation: landscape) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .scratch-tab, .slide-out {
+                width: 30%;
+            }
+        }
+
+        /* Portrait Mode */
+        @media (orientation: portrait) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .scratch-tab, .slide-out {
+                width: 100%;
+            }
+        }
+
+        /* Widescreen */
+        @media (min-width: 1920px) {
+            .tabs-wrapper {
+                max-width: 1440px;
+                margin: 0 auto;
+            }
+
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .scratch-tab, .slide-out {
+                width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+<section class="tab-section">
+    <h2>Interactive Direct Mail Samples</h2>
+
+    <div class="tabs-wrapper">
+        <button class="tab-link scratch-tab" onclick="openTab(event, 'Box1')">Scratch Off Mailers</button>
+        <button class="tab-link scratch-tab" onclick="openTab(event, 'Box2')">3D PopUp Elements</button>
+        <button class="tab-link slide-out" onclick="openTab(event, 'Box3')">Slide Out & Pull Away Displays</button>
+        <button class="tab-link slide-out" onclick="openTab(event, 'Box4')">Interactive & Multi Layered Pieces</button>
+    </div>
+
+    <div id="Box1" class="tab-panel">
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>Neurocrine Scratch Off Version 1</h3>
+                <video controls style="border-radius: 5px;">
+                    <source src="path_to_your_video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Neurocrine Scratch Off Version 1</h3>
+                <source src="path_to_your_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <a href="#" class="download-btn">Download Now</a>
+        </div>
+               
+            </div>
+        </div>
+    </div>
+
+    <div id="Box2" class="tab-panel">
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>Box 1</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 2</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 3</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="Box3" class="tab-panel">
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>Box 1</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 2</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 3</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 4</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="Box4" class="tab-panel">
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>Box 1</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 2</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 3</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 4</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 5</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabContent, tabButtons;
+
+            tabContent = document.getElementsByClassName("tab-panel");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+
+            tabButtons = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].className = tabButtons[i].className.replace(" active", "");
+            }
+
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Automatically open the first tab when the page loads
+        document.addEventListener("DOMContentLoaded", function() {
+            openTab(null, 'Box1');
+        });
+    </script>
+</section>
+</body>
+</html>

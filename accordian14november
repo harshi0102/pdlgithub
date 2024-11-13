@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabbed Layout with Two Boxes in Each Tab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2.5em;
+            color: #0066cc;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            animation: fadeIn 2s ease-in-out;
+            padding: 10px 0;
+        }
+
+        .tab-navigation {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            font-family: 'Manrope';
+        }
+
+        .tab-button {
+            background-color: inherit;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 12px 20px;
+            transition: 0.3s;
+            font-size: 16px;
+            width: 48%;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            min-width: 120px;
+            margin: 5px;
+            color: white;
+            font-family: 'Manrope';
+            text-align: center;
+            flex: 1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-button:hover {
+            background-color: #0066cc;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .tab-button.active {
+            background-color: rgb(70, 70, 70);
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        /* Two columns for each tab's content */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns */
+            gap: 20px;
+        }
+
+        .box-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            min-width: 320px;
+            height: auto;
+        }
+
+        .box-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            color: black;
+            text-decoration: underline !important;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: 'Manrope';
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .download-link:hover {
+            background-color: #0066cc;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+<section class="tab-section">
+    <h2>Interactive Direct Mail Samples</h2>
+
+    <div class="tab-navigation">
+        <button class="tab-button" onclick="openTab(event, 'content-1')">Scratch Off Mailers</button>
+        <button class="tab-button" onclick="openTab(event, 'content-2')">3D PopUp Elements</button>
+        <button class="tab-button" onclick="openTab(event, 'content-3')">Slide Out & Pull Away Displays</button>
+        <button class="tab-button" onclick="openTab(event, 'content-4')">Interactive & Multi Layered Pieces</button>
+    </div>
+
+    <!-- Scratch Off Mailers Tab Content -->
+    <div id="content-1" class="tab-content">
+        <div class="grid-layout">
+            <div class="box-item">
+                <h3>Neurocrine Scratch Off Version 1</h3>
+                <video controls style="border-radius: 5px;">
+                    <source src="path_to_your_video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a href="#" class="download-link">Download Now</a>
+            </div>
+            <div class="box-item">
+                <h3>Scratch Off Mailer Box 2</h3>
+                <video controls style="border-radius: 5px;">
+                    <source src="path_to_your_video_2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a href="#" class="download-link">Download Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3D PopUp Elements Tab Content -->
+    <div id="content-2" class="tab-content">
+        <div class="grid-layout">
+            <div class="box-item">
+                <h3>3D PopUp Element 1</h3>
+                <video controls style="border-radius: 5px;">
+                    <source src="path_to_your_video_1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a href="#" class="download-link">Download Now</a>
+            </div>
+            <div class="box-item">
+                <h3>3D PopUp Element 2</h3>
+                <video controls style="border-radius: 5px;">
+                    <source src="path_to_your_video_2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a href="#" class="download-link">Download Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide Out & Pull Away Displays Tab Content -->
+    <div id="content-3" class="tab-content">
+        <div class="grid-layout">
+            <div class="box-item">
+                <h3>Slide Out Display 1</h3>
+                <video controls style="border-radius: 5px;">
+                    <source src="path_to_your_video_3.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a href="#" class="download-link">Download Now</a>
+            </div>
+            <div class="box-item">
+                <h3>Slide Out Display 2</h3>
+                <video controls style="border-radius: 5px;">
+                    <source src="path_to_your_video_4.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a href="#" class="download-link">Download Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive & Multi Layered Pieces Tab Content -->
+    <div id="content-4" class="tab-content">
+        <div class="grid-layout">
+            <div class="box-item">
+                <h3>Interactive Piece 1</h3>
+                <video controls style="border-radius: 5px;">
+                    <source src="path_to_your_video_5.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a href="#" class="download-link">Download Now</a>
+            </div>
+            <div class="box-item">
+                <h3>Interactive Piece 2</h3>
+                <video controls style="border-radius: 5px;">
+                    <source src="path_to_your_video_6.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a href="#" class="download-link">Download Now</a>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabContent, tabLinks;
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        tabLinks = document.getElementsByClassName("tab-button");
+        for (i = 0; i < tabLinks.length; i++) {
+            tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</body>
+</html>

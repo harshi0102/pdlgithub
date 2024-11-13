@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabbed Layout with Two Boxes in Each Tab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Manrope', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2em;
+            color: #0066cc;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Tab Container Styles */
+        .tabs-wrapper {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+        }
+
+        .tab-link {
+            background-color: inherit;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 8px 12px;
+            transition: 0.3s;
+            font-size: 16px;
+            width: 48%;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            min-width: 120px;
+            margin: 3px;
+            color: white;
+            font-family: 'Manrope';
+            text-align: center;
+        }
+
+        .tab-link:hover {
+            background-color: white;
+            box-shadow: none;
+            color: black;
+        }
+
+        .tab-link.active {
+            background-color: rgb(70, 70, 70);
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        /* Tab Content Styles */
+        .tab-panel {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .grid-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scratch Tab Styling */
+        .scratch-tab {
+            background-color: #0079c2; /* Corrected background color */
+            color: white;
+            font-weight: bold;
+            text-transform: capitalize;
+            font-family: 'Manrope';
+            width: 240px;
+        }
+
+        .scratch-tab:hover {
+            background-color: rgb(70, 70, 70);
+            color: white;
+        }
+
+        /* Slide Out Tab Styling */
+        .slide-out {
+            background-color: #0079c2; /* Change the background to a different color */
+            color: white;
+            font-weight: bold;
+            text-transform: capitalize;
+            font-family: 'Manrope';
+            width: 320px;
+        }
+
+        .slide-out:hover {
+            background-color: rgb(70, 70, 70);
+            color: white;
+        }
+
+        /* Specific styles for active state */
+        .slide-out.active {
+            background-color: rgb(70, 70, 70); /* Darker color when active */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+<section class="tab-section">
+    <h2>Interactive Direct Mail Samples</h2>
+
+    <div class="tabs-wrapper">
+        <button class="tab-link scratch-tab" onclick="openTab(event, 'Box1')">Scratch Off Mailers</button>
+        <button class="tab-link scratch-tab" onclick="openTab(event, 'Box2')">3D PopUp Elements</button>
+        <button class="tab-link slide-out" onclick="openTab(event, 'Box3')">Slide Out & Pull Away Displays</button>
+        <button class="tab-link slide-out" onclick="openTab(event, 'Box4')">Interactive & Multi Layered Pieces</button>
+    </div>
+
+    <div id="Box1" class="tab-panel">
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>Box 1</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 2</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="Box2" class="tab-panel">
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>Box 1</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 2</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 3</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="Box3" class="tab-panel">
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>Box 1</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 2</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 3</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 4</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="Box4" class="tab-panel">
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>Box 1</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 2</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 3</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 4</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+            <div class="grid-item">
+                <h3>Box 5</h3>
+                <a href="#" class="download-btn">Download Now</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabContent, tabButtons;
+
+            tabContent = document.getElementsByClassName("tab-panel");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+
+            tabButtons = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].className = tabButtons[i].className.replace(" active", "");
+            }
+
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Automatically open the first tab when the page loads
+        document.addEventListener("DOMContentLoaded", function() {
+            openTab(null, 'Box1');
+        });
+    </script>
+</section>
+</body>
+</html>
