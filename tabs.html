@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabbed Layout with Two Boxes in Each Tab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Manrope', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2em;
+            color: #0066cc; /* Blue color for the headline */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Tab Styles */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+            width: 25%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        .tab button.active {
+            background-color: #ccc;
+            font-weight: bold;
+        }
+
+        /* Tab Content Styles */
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .grid-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .tab button {
+                width: 50%;
+                font-size: 14px;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tab button {
+                width: 100%;
+                font-size: 12px;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+        }
+
+        /* For larger screens like desktop and widescreen */
+        @media (min-width: 1200px) {
+            .tab button {
+                width: 20%;
+                font-size: 18px;
+            }
+
+            h2 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h2>Tabs with Boxes</h2>
+
+<div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'Sample1')">Sample 1</button>
+    <button class="tablinks" onclick="openCity(event, 'Sample2')">Sample 2</button>
+    <button class="tablinks" onclick="openCity(event, 'Sample3')">Sample 3</button>
+    <button class="tablinks" onclick="openCity(event, 'Sample4')">Sample 4</button>
+</div>
+
+<div id="Sample1" class="tabcontent">
+    <div class="grid-container">
+        <div class="grid-item">
+            <h3>Box 1</h3>
+            <a href="#" class="download-btn">Download Now</a>
+        </div>
+        <div class="grid-item">
+            <h3>Box 2</h3>
+            <a href="#" class="download-btn">Download Now</a>
+        </div>
+    </div>
+</div>
+
+<div id="Sample2" class="tabcontent">
+    <div class="grid-container">
+        <div class="grid-item">
+            <h3>Box 1</h3>
+            <a href="#" class="download-btn">Download Now</a>
+        </div>
+        <div class="grid-item">
+            <h3>Box 2</h3>
+            <a href="#" class="download-btn">Download Now</a>
+        </div>
+    </div>
+</div>
+
+<div id="Sample3" class="tabcontent">
+    <div class="grid-container">
+        <div class="grid-item">
+            <h3>Box 1</h3>
+            <a href="#" class="download-btn">Download Now</a>
+        </div>
+        <div class="grid-item">
+            <h3>Box 2</h3>
+            <a href="#" class="download-btn">Download Now</a>
+        </div>
+    </div>
+</div>
+
+<div id="Sample4" class="tabcontent">
+    <div class="grid-container">
+        <div class="grid-item">
+            <h3>Box 1</h3>
+            <a href="#" class="download-btn">Download Now</a>
+        </div>
+        <div class="grid-item">
+            <h3>Box 2</h3>
+            <a href="#" class="download-btn">Download Now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";  // Hide all tab content
+    }
+
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");  // Remove active class from all buttons
+    }
+
+    document.getElementById(cityName).style.display = "block";  // Show the selected tab content
+    evt.currentTarget.className += " active";  // Add 'active' class to the clicked button
+}
+
+// Trigger click on the first tab by default
+document.querySelector('.tablinks').click();
+</script>
+
+</body>
+</html>
