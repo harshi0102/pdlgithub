@@ -189,6 +189,15 @@
                 </video>
                 <a href="#" class="download-link">Download Now</a>
             </div>
+
+            <div class="box-item">
+                <h3>3D PopUp Element 2</h3>
+                <video controls style="border-radius: 5px;">
+                    <source src="path_to_your_video_2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a href="#" class="download-link">Download Now</a>
+            </div>
         </div>
     </div>
 
