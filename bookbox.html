@@ -9,9 +9,6 @@
     <!-- Google Fonts: Manrope -->
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <!-- External CSS (if you have one, otherwise internal styles) -->
-    <link rel="stylesheet" href="styles.css"> 
-
     <style>
         /* Basic reset and font */
         * {
@@ -27,16 +24,20 @@
             line-height: 1.6;
         }
 
+        /* Container with white background */
         .container {
             width: 90%;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
+            background-color: white;  /* White background for the container */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Box shadow around the container */
+            border-radius: 12px; /* Optional: rounded corners for the container */
         }
 
         .title {
             text-align: center;
             font-size: 2.5em;
-            color: #007bff; /* Blue color for title */
+            color: rgb(66, 91, 118); /* Blue color for title */
             margin-bottom: 40px;
             animation: fadeIn 2s ease-out;
         }
@@ -47,9 +48,10 @@
             to { opacity: 1; }
         }
 
+        /* Grid layout for book boxes (2 columns layout) */
         .book-boxes {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Two columns by default */
+            grid-template-columns: repeat(2, 1fr); /* Two columns layout */
             gap: 30px;
             justify-items: center;
         }
@@ -57,9 +59,9 @@
         .book-box {
             background-color: white;
             border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Added box shadow to each box */
             width: 100%;
-            max-width: 350px;
+            max-width: 500px;
             padding: 20px;
             text-align: center;
             transition: all 0.3s ease-in-out;
@@ -74,7 +76,7 @@
 
         .book-box:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* Darker shadow on hover */
         }
 
         .book-box img {
@@ -86,31 +88,32 @@
 
         .book-box h3 {
             font-size: 1.6em;
-            color:rgb(66, 91, 118);
+            color: rgb(66, 91, 118); /* Blue color for the headings */
             margin-top: 10px;
             margin-bottom: 15px;
             transition: color 0.3s ease;
         }
 
         .book-box h3:hover {
-            color:rgb(66, 91, 118); /* Title color on hover */
+            color: #0056b3; /* Darker blue for hover effect */
         }
 
         .book-box p {
             font-size: 1em;
-            color:rgb(66, 91, 118);
+            color: rgb(66, 91, 118);
             margin-bottom: 20px;
             transition: color 0.3s ease;
         }
 
         .book-box p:hover {
-            color:rgb(66, 91, 118); /* Text color on hover */
+            color: #0056b3; /* Darker blue for hover effect */
         }
 
         .download-button {
             padding: 12px 25px;
-            color: blue;
-            text-decoration: underline;
+            background-color: rgb(66, 91, 118);
+            color: white;
+            text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
             display: inline-block;
@@ -118,25 +121,41 @@
         }
 
         .download-button:hover {
+            background-color: #0056b3; /* Darker blue for hover effect */
             transform: scale(1.05);
         }
 
         /* Responsive Styles */
         @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+
+            .book-box {
+                padding: 15px;
+            }
+
+            .title {
+                font-size: 2em; /* Smaller title font for mobile */
+            }
+
+            /* Switch to a single column layout for mobile */
             .book-boxes {
-                grid-template-columns: 1fr; /* Single column for tablet and mobile */
+                grid-template-columns: 1fr; /* 1 column for mobile */
             }
         }
 
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .container {
-                width: 85%;
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.8em; /* Even smaller title font for smaller devices */
             }
-        }
 
-        @media (min-width: 1025px) {
-            .container {
-                width: 80%;
+            .book-box h3 {
+                font-size: 1.4em; /* Adjust heading size for mobile */
+            }
+
+            .download-button {
+                padding: 10px 20px; /* Adjust button padding for mobile */
             }
         }
 
@@ -150,31 +169,31 @@
             <div class="book-boxes">
                 <!-- Box 1 -->
                 <div class="book-box">
-                    <img src="https://via.placeholder.com/150" alt="Book 1">
+                    <img src="https://www.pdqcom.com/hs-fs/hubfs/Content%20Offers/count-catalogue-thumbnail.jpg?width=900&height=1164&name=count-catalogue-thumbnail.jpg" alt="Book 1">
                     <h3>The PDQ Count Catalog</h3>
                     <p>This document, updated quarterly, includes our list of 304 HCP specialties and the specific number of contacts and email addresses in our database for each one.</p>
                     <a href="#" class="download-button">Download Now</a>
                 </div>
                 <!-- Box 2 -->
                 <div class="book-box">
-                    <img src="https://via.placeholder.com/150" alt="Book 2">
+                    <img src="https://www.pdqcom.com/hs-fs/hubfs/Content%20Offers/email-guidelines-thumbnail.jpg?width=900&height=1164&name=email-guidelines-thumbnail.jpg" alt="Book 2">
                     <h3>Email Best Practices Ebook</h3>
-                    <p>Learn everything you need to know to send the best emails for prospecting, closing sales, and keeping customers happy with our free ebook..</p>
-                    <a href="#" class="download-button">Download Now </a>
+                    <p>Learn everything you need to know to send the best emails for prospecting, closing sales, and keeping customers happy with our free ebook.</p>
+                    <a href="#" class="download-button">Download Now</a>
                 </div>
                 <!-- Box 3 -->
                 <div class="book-box">
-                    <img src="https://via.placeholder.com/150" alt="Book 3">
-                    <h3>Book 3 Title</h3>
-                    <p>Short description about the book content.</p>
-                    <a href="#" class="download-button">Download</a>
+                    <img src="https://www.pdqcom.com/hs-fs/hubfs/Content%20Offers/thumbnail-default.jpg?width=900&height=1164&name=thumbnail-default.jpg" alt="Book 3">
+                    <h3>The PDQ HCP Marketing Bootcamp</h3>
+                    <p>The HCP Marketing Bootcamp is a free, week-long series delivered via email. Each day, you will receive content breaking down the most important pieces of a successful HCP campaign.</p>
+                    <a href="#" class="download-button">Enroll Now</a>
                 </div>
                 <!-- Box 4 -->
                 <div class="book-box">
-                    <img src="https://via.placeholder.com/150" alt="Book 4">
-                    <h3>Book 4 Title</h3>
-                    <p>Short description about the book content.</p>
-                    <a href="#" class="download-button">Download</a>
+                    <img src="https://www.pdqcom.com/hs-fs/hubfs/Content%20Offers/marketing-report-thumbnail.jpg?width=900&height=1164&name=marketing-report-thumbnail.jpg" alt="Book 4">
+                    <h3>The HCP Marketing Report</h3>
+                    <p>This collaborative report, conducted with pharmaceutical news provider FirstWord, reveals a number of interesting trends and insights to help position your marketing strategy for success.</p>
+                    <a href="#" class="download-button">Download Now</a>
                 </div>
             </div>
         </div>
