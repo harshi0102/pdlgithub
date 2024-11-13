@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Downloadable Books</title>
+    
+    <!-- Google Fonts: Manrope -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- External CSS (if you have one, otherwise internal styles) -->
+    <link rel="stylesheet" href="styles.css"> 
+
+    <style>
+        /* Basic reset and font */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2.5em;
+            color: #007bff; /* Blue color for title */
+            margin-bottom: 40px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* Animation for fade-in effect */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .book-boxes {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns by default */
+            gap: 30px;
+            justify-items: center;
+        }
+
+        .book-box {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        /* Animation for box sliding up */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .book-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .book-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .book-box h3 {
+            font-size: 1.6em;
+            color: #333;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .book-box h3:hover {
+            color: #007bff; /* Title color on hover */
+        }
+
+        .book-box p {
+            font-size: 1em;
+            color: #555;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .book-box p:hover {
+            color: #007bff; /* Text color on hover */
+        }
+
+        .download-button {
+            padding: 12px 25px;
+            color: blue;
+            text-decoration: underline;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .download-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .book-boxes {
+                grid-template-columns: 1fr; /* Single column for tablet and mobile */
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                width: 85%;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .container {
+                width: 80%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <section class="book-library">
+        <div class="container">
+            <h2 class="title">Downloadable Books</h2>
+            <div class="book-boxes">
+                <!-- Box 1 -->
+                <div class="book-box">
+                    <img src="https://via.placeholder.com/150" alt="Book 1">
+                    <h3>The PDQ Count Catalog</h3>
+                    <p>This document, updated quarterly, includes our list of 304 HCP specialties and the specific number of contacts and email addresses in our database for each one.</p>
+                    <a href="#" class="download-button">Download Now</a>
+                </div>
+                <!-- Box 2 -->
+                <div class="book-box">
+                    <img src="https://via.placeholder.com/150" alt="Book 2">
+                    <h3>Email Best Practices Ebook</h3>
+                    <p>Learn everything you need to know to send the best emails for prospecting, closing sales, and keeping customers happy with our free ebook..</p>
+                    <a href="#" class="download-button">Download Now </a>
+                </div>
+                <!-- Box 3 -->
+                <div class="book-box">
+                    <img src="https://via.placeholder.com/150" alt="Book 3">
+                    <h3>Book 3 Title</h3>
+                    <p>Short description about the book content.</p>
+                    <a href="#" class="download-button">Download</a>
+                </div>
+                <!-- Box 4 -->
+                <div class="book-box">
+                    <img src="https://via.placeholder.com/150" alt="Book 4">
+                    <h3>Book 4 Title</h3>
+                    <p>Short description about the book content.</p>
+                    <a href="#" class="download-button">Download</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
