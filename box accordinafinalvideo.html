@@ -348,22 +348,33 @@
 
 <script>
 window.onload = function() {
-    // Trigger the first tab to be open
-    document.querySelector('.tab-button.active').click();
-};
-    function openTab(evt, tabName) {
-        var i, tabContent, tabLinks;
-        tabContent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabContent.length; i++) {
-            tabContent[i].style.display = "none";
-        }
-        tabLinks = document.getElementsByClassName("tab-button");
-        for (i = 0; i < tabLinks.length; i++) {
-            tabLinks[i].className = tabLinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
+    // Automatically open the first tab when the page loads
+    var firstTab = document.querySelector('.tab-button');
+    if (firstTab) {
+        firstTab.click(); // Simulate a click on the first tab
     }
+};
+
+function openTab(evt, tabName) {
+    var i, tabContent, tabLinks;
+
+    // Hide all tab content
+    tabContent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
+    }
+
+    // Remove the "active" class from all tab buttons
+    tabLinks = document.getElementsByClassName("tab-button");
+    for (i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+    }
+
+    // Show the content of the clicked tab and add "active" class to the tab
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
 </script>
 
 </body>
